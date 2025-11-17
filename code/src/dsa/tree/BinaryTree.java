@@ -141,6 +141,47 @@ public class BinaryTree {
         }
     }
 
+    // deletion function
+    private TreeNode<Integer> getSmallestValue(TreeNode<Integer> node){
+        TreeNode<Integer> treeNode=node;
+        while (treeNode.getLeft()!=null){
+            treeNode=treeNode.getLeft();
+        }
+        return treeNode;
+    }
+
+    public void deleteTreeNode(Integer value){
+        this.root=deleteRecurrsively(root,value);
+    }
+
+    private TreeNode<Integer> deleteRecurrsively(TreeNode<Integer> node, Integer value) {
+        if (node==null){
+            return null;
+        }
+
+        if (Objects.equals(node.getData(), value)){
+           if (node.getLeft()==null){
+               return node.getRight();
+           }
+           if(node.getRight()==null){
+               return node.getLeft();
+           }
+
+           TreeNode<Integer> successor=getSmallestValue(node.getRight());
+            node.setData(successor.getData()); // copy successor value
+            // delete the successor node from right subtree
+            node.setRight(deleteRecurrsively(node.getRight(), successor.getData()));
+        }
+        else if (node.getData()>value){
+            node.setLeft(deleteRecurrsively(node.getLeft(),value));
+        }
+        else
+        {
+            node.setRight(deleteRecurrsively(node.getRight(),value));
+        }
+        return node;
+    }
+
 
     public TreeNode<Integer> getRoot() {
         return root;
