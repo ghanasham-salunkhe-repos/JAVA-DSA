@@ -1,4 +1,4 @@
-package dsa;
+package codes;
 
 public class RandomClass {
 }
