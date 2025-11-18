@@ -11,7 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CommonValueProblem  {// n***2 complexity due to double for loop
+public class CommonValueProblem {// n***2 complexity due to double for loop
+
     public static Boolean bruteforce(List<String> list1, List<String> list2) {
         for (String s1 : list1) {
             for (String s2 : list2) {
@@ -40,12 +41,12 @@ public class CommonValueProblem  {// n***2 complexity due to double for loop
         return false;
     }
 
-    public static void main(String[] args) {
-        List<String> list = Arrays.asList("A","B","C");
-        List<String> list2 = Arrays.asList("X","Y","Z","C");
+    static void main(String[] args) {
+        List<String> list = Arrays.asList("A", "B", "C");
+        List<String> list2 = Arrays.asList("X", "Y", "Z", "C");
 
-        System.out.println(bruteforce(list,list2));
-        System.out.println(optimisedSolution(list,list2));
+        System.out.println(bruteforce(list, list2));
+        System.out.println(optimisedSolution(list, list2));
     }
 }
 

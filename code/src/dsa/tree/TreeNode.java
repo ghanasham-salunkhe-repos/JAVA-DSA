@@ -6,10 +6,6 @@ public class TreeNode<T> {
     private TreeNode<T> left;
     private TreeNode<T> right;
 
-    public T getData() {
-        return data;
-    }
-
     public TreeNode(T data, TreeNode<T> left, TreeNode<T> right) {
         this.data = data;
         this.left = left;
@@ -25,6 +21,14 @@ public class TreeNode<T> {
     public TreeNode() {
     }
 
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
         return "TreeNode{" +
@@ -32,10 +36,6 @@ public class TreeNode<T> {
                 ", left=" + left +
                 ", right=" + right +
                 '}';
-    }
-
-    public void setData(T data) {
-        this.data = data;
     }
 
     public TreeNode<T> getLeft() {

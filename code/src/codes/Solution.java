@@ -1,10 +1,17 @@
 package codes;
 
-import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 class Solution {
     private static final Logger LOG = Logger.getLogger(Solution.class.getName());
+
+    static void main(String[] args) {
+        int[] input = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        Solution s = new Solution();
+        int ans = s.maxSubArray(input);
+        LOG.log(Level.INFO, "Final answer for input is {0}", ans);
+    }
 
     public int maxSubArray(int[] nums) {
         int currentSum = nums[0];
@@ -30,12 +37,5 @@ class Solution {
         }
         LOG.log(Level.INFO, "Finished. Result maxSubArray={0}", maxSum);
         return maxSum;
-    }
-
-    public static void main(String[] args) {
-        int[] input = {-2,1,-3,4,-1,2,1,-5,4};
-        Solution s = new Solution();
-        int ans = s.maxSubArray(input);
-        LOG.log(Level.INFO, "Final answer for input is {0}", ans);
     }
 }

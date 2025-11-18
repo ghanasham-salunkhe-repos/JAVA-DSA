@@ -5,11 +5,40 @@ import java.util.LinkedList;
 
 public class StackWithLinkedList {
 
-    private Integer top ;
-    private Integer bottom ;
+    private Integer top;
+    private Integer bottom;
     private int size;
 
-    private LinkedList<Integer> list;
+    private final LinkedList<Integer> list;
+
+    public StackWithLinkedList() {
+        list = new LinkedList<>();
+        size = 0;
+        top = null;
+        bottom = null;
+    }
+
+    static void main(String[] args) {
+        StackWithLinkedList stack = new StackWithLinkedList();
+        System.out.println(stack.isEmpty());
+        System.out.println(stack);
+        stack.push(1);
+        stack.push(12);
+        stack.push(45);
+        stack.push(111);
+        stack.push(812);
+        stack.push(445);
+        System.out.println(stack);
+        System.out.println(stack.peek());
+
+
+        System.out.println("=================================================+=======================");
+        System.out.println(stack);
+        System.out.println(stack.pop());
+        System.out.println(stack);
+        System.out.println(stack.pop());
+        System.out.println(stack);
+    }
 
     @Override
     public String toString() {
@@ -21,26 +50,18 @@ public class StackWithLinkedList {
                 '}';
     }
 
-    public StackWithLinkedList() {
-        list= new LinkedList<>();
-        size = 0;
-        top = null;
-        bottom = null;
-    }
-
-    public Integer peek(){
+    public Integer peek() {
         return top;
     }
 
-    public void push(Integer value){
-        if (top == null){
-            top=value;
-            bottom=value;
+    public void push(Integer value) {
+        if (top == null) {
+            top = value;
+            bottom = value;
             size++;
             list.addLast(value);
-        }
-        else{
-            top=value;
+        } else {
+            top = value;
             size++;
             list.addLast(value);
         }
@@ -61,31 +82,8 @@ public class StackWithLinkedList {
         return val;
     }
 
-    public Boolean isEmpty(){
+    public Boolean isEmpty() {
         return top == null;
-    }
-
-
-    public static void main(String[] args) {
-        StackWithLinkedList stack = new StackWithLinkedList();
-        System.out.println(stack.isEmpty());
-        System.out.println(stack);
-        stack.push(1);
-        stack.push(12);
-        stack.push(45);
-        stack.push(111);
-        stack.push(812);
-        stack.push(445);
-        System.out.println(stack);
-        System.out.println(stack.peek());
-
-
-        System.out.println("=================================================+=======================");
-        System.out.println(stack);
-        System.out.println(stack.pop());
-        System.out.println(stack);
-        System.out.println(stack.pop());
-        System.out.println(stack);
     }
 
 }

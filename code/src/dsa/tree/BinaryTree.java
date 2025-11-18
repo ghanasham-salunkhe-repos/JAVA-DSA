@@ -1,6 +1,5 @@
 package dsa.tree;
 
-import java.security.PublicKey;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,43 +13,40 @@ public class BinaryTree {
         this.root.setRight(null);
     }
 
-    public BinaryTree(){
-        this.root=null;
+    public BinaryTree() {
+        this.root = null;
     }
 
     //    lookup functions
-    public TreeNode<Integer> lookUpValue(Integer value){
-        return findAndReturnValue(this.root,value);
+    public TreeNode<Integer> lookUpValue(Integer value) {
+        return findAndReturnValue(this.root, value);
     }
 
-    private TreeNode<Integer> findAndReturnValue(TreeNode<Integer> treeNode, Integer value ){
-        if (treeNode==null){
+    private TreeNode<Integer> findAndReturnValue(TreeNode<Integer> treeNode, Integer value) {
+        if (treeNode == null) {
             return null;// throw error
         } else if (Objects.equals(treeNode.getData(), value)) {
             return treeNode;
-        } else if (treeNode.getData()>value) {
-            return findAndReturnValue(treeNode.getLeft(),value);
-        }
-        else {
-            return findAndReturnValue(treeNode.getRight(),value);
+        } else if (treeNode.getData() > value) {
+            return findAndReturnValue(treeNode.getLeft(), value);
+        } else {
+            return findAndReturnValue(treeNode.getRight(), value);
         }
     }
 
-    public TreeNode<Integer> lookupWithoutRecursion(Integer value){
+    public TreeNode<Integer> lookupWithoutRecursion(Integer value) {
 
-        if (Objects.equals(this.root.getData(), value)){
+        if (Objects.equals(this.root.getData(), value)) {
             return this.root;
-        } else{
-            TreeNode<Integer> mynode=this.root;
-            while (mynode!=null){
-                if (Objects.equals(mynode.getData(), value)){
+        } else {
+            TreeNode<Integer> mynode = this.root;
+            while (mynode != null) {
+                if (Objects.equals(mynode.getData(), value)) {
                     return mynode;
-                }
-                else if (mynode.getData()>value){
-                    mynode=mynode.getLeft();
-                }
-                else {
-                    mynode=mynode.getRight();
+                } else if (mynode.getData() > value) {
+                    mynode = mynode.getLeft();
+                } else {
+                    mynode = mynode.getRight();
                 }
             }
             return null;
@@ -58,38 +54,35 @@ public class BinaryTree {
     }
 
     // contains function
-    public Boolean containsValue(Integer value){
-        return findValueExistOrNot(root,value);
+    public Boolean containsValue(Integer value) {
+        return findValueExistOrNot(root, value);
     }
 
-    private Boolean findValueExistOrNot(TreeNode<Integer> treeNode, Integer value ){
-        if (treeNode==null){
+    private Boolean findValueExistOrNot(TreeNode<Integer> treeNode, Integer value) {
+        if (treeNode == null) {
             return false;
         } else if (Objects.equals(treeNode.getData(), value)) {
             return true;
-        } else if (treeNode.getData()>value) {
-            return findValueExistOrNot(treeNode.getLeft(),value);
-        }
-        else {
-            return findValueExistOrNot(treeNode.getRight(),value);
+        } else if (treeNode.getData() > value) {
+            return findValueExistOrNot(treeNode.getLeft(), value);
+        } else {
+            return findValueExistOrNot(treeNode.getRight(), value);
         }
     }
 
-    public Boolean searchWithoutRecursion(Integer value){
+    public Boolean searchWithoutRecursion(Integer value) {
 
-        if (Objects.equals(this.root.getData(), value)){
+        if (Objects.equals(this.root.getData(), value)) {
             return true;
-        } else{
-            TreeNode<Integer> mynode=this.root;
-            while (mynode!=null){
-                if (Objects.equals(mynode.getData(), value)){
+        } else {
+            TreeNode<Integer> mynode = this.root;
+            while (mynode != null) {
+                if (Objects.equals(mynode.getData(), value)) {
                     return true;
-                }
-                else if (mynode.getData()>value){
-                    mynode=mynode.getLeft();
-                }
-                else {
-                    mynode=mynode.getRight();
+                } else if (mynode.getData() > value) {
+                    mynode = mynode.getLeft();
+                } else {
+                    mynode = mynode.getRight();
                 }
             }
             return false;
@@ -99,59 +92,55 @@ public class BinaryTree {
 
     // insert functions
 
-    public void insertNewNode(Integer value){
-        this.root=insertRecursively(root, value);
+    public void insertNewNode(Integer value) {
+        this.root = insertRecursively(root, value);
     }
 
     private TreeNode<Integer> insertRecursively(TreeNode<Integer> node, Integer value) {
-        if (node==null){
+        if (node == null) {
             return new TreeNode<>(value);
-        }
-        else if (node.getData()>value){
-            node.setLeft(insertRecursively(node.getLeft(),value));
-        }
-        else {
-            node.setRight(insertRecursively(node.getRight(),value));
+        } else if (node.getData() > value) {
+            node.setLeft(insertRecursively(node.getLeft(), value));
+        } else {
+            node.setRight(insertRecursively(node.getRight(), value));
         }
         return node;
     }
 
 
-    public void insertNodeWithoutRecursion(Integer value){
+    public void insertNodeWithoutRecursion(Integer value) {
 
-        if (this.root==null){
-            this.root=new TreeNode<>(value);
-        } else{
-            TreeNode<Integer> mynode=this.root;
-            while (true){
-                if (mynode.getData()>value && mynode.getLeft()==null){
+        if (this.root == null) {
+            this.root = new TreeNode<>(value);
+        } else {
+            TreeNode<Integer> mynode = this.root;
+            while (true) {
+                if (mynode.getData() > value && mynode.getLeft() == null) {
                     mynode.setLeft(new TreeNode<>(value));
                     break;
-                }
-                else if (mynode.getData()<=value && mynode.getRight()==null){
+                } else if (mynode.getData() <= value && mynode.getRight() == null) {
                     mynode.setRight(new TreeNode<>(value));
                     break;
-                } else if (mynode.getData()>value) {
-                    mynode=mynode.getLeft();
-                }
-                else {
-                    mynode=mynode.getRight();
+                } else if (mynode.getData() > value) {
+                    mynode = mynode.getLeft();
+                } else {
+                    mynode = mynode.getRight();
                 }
             }
         }
     }
 
     // deletion function
-    private TreeNode<Integer> getSmallestValue(TreeNode<Integer> node){
-        TreeNode<Integer> treeNode=node;
-        while (treeNode.getLeft()!=null){
-            treeNode=treeNode.getLeft();
+    private TreeNode<Integer> getSmallestValue(TreeNode<Integer> node) {
+        TreeNode<Integer> treeNode = node;
+        while (treeNode.getLeft() != null) {
+            treeNode = treeNode.getLeft();
         }
         return treeNode;
     }
 
-    public void deleteTreeNode(Integer value){
-        this.root=deleteRecurrsively(root,value);
+    public void deleteTreeNode(Integer value) {
+        this.root = deleteRecurrsively(root, value);
     }
 
 //    deletion algo
@@ -163,31 +152,28 @@ public class BinaryTree {
 //    make that successor point to it child of nodetobedeleted
 //    make parent of nodetobedeleted point to successor
 
-    private TreeNode<Integer> deleteRecurrsively(TreeNode<Integer> treeNode,Integer value){
+    private TreeNode<Integer> deleteRecurrsively(TreeNode<Integer> treeNode, Integer value) {
 
         // child node
-        if (treeNode==null){
+        if (treeNode == null) {
             return null;
-        }
-        else if(treeNode.getData()>value){
-            treeNode.setLeft(deleteRecurrsively(treeNode.getLeft(),value));
-        }
-        else if (treeNode.getData()<value) {
-            treeNode.setRight(deleteRecurrsively(treeNode.getRight(),value));
-        }
-        else {
+        } else if (treeNode.getData() > value) {
+            treeNode.setLeft(deleteRecurrsively(treeNode.getLeft(), value));
+        } else if (treeNode.getData() < value) {
+            treeNode.setRight(deleteRecurrsively(treeNode.getRight(), value));
+        } else {
             // rule if one child is present
-            if (treeNode.getLeft()==null){
+            if (treeNode.getLeft() == null) {
                 return treeNode.getRight();
             }
-            if (treeNode.getRight()==null){
+            if (treeNode.getRight() == null) {
                 return treeNode.getLeft();
             }
 
 //            rule if both childs are present
-            TreeNode<Integer> successorNode=getSmallestValue(treeNode.getRight());
+            TreeNode<Integer> successorNode = getSmallestValue(treeNode.getRight());
             treeNode.setData(successorNode.getData());
-            treeNode.setRight(deleteRecurrsively(treeNode.getRight(),successorNode.getData()));
+            treeNode.setRight(deleteRecurrsively(treeNode.getRight(), successorNode.getData()));
         }
         return treeNode;
     }

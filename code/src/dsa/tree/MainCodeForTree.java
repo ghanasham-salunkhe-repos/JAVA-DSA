@@ -4,7 +4,7 @@ public class MainCodeForTree {
 
     static void main() {
 
-        BinaryTree binaryTree=new BinaryTree(100);
+        BinaryTree binaryTree = new BinaryTree(100);
 //        binaryTree.insertNodeWithoutRecursion(50);
 //        binaryTree.insertNodeWithoutRecursion(150);
 //        binaryTree.insertNodeWithoutRecursion(110);
@@ -24,7 +24,7 @@ public class MainCodeForTree {
 //        System.out.println(binaryTree.searchWithoutRecursion(25));
 //        System.out.println(binaryTree.searchWithoutRecursion(251));
 
-        binaryTree=new BinaryTree(100);
+        binaryTree = new BinaryTree(100);
         binaryTree.insertNewNode(50);
         binaryTree.insertNewNode(150);
         binaryTree.insertNewNode(110);
