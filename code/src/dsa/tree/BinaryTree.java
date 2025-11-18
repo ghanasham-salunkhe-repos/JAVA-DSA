@@ -154,34 +154,43 @@ public class BinaryTree {
         this.root=deleteRecurrsively(root,value);
     }
 
-    private TreeNode<Integer> deleteRecurrsively(TreeNode<Integer> node, Integer value) {
-        if (node==null){
+//    deletion algo
+
+//    if node is leaf node -> delete directly point parent to null
+//    if node has one child --> child replaces parent, parent points to that new node
+//    if node has two child -->
+//    find successor -> find smallest value from right subtree
+//    make that successor point to it child of nodetobedeleted
+//    make parent of nodetobedeleted point to successor
+
+    private TreeNode<Integer> deleteRecurrsively(TreeNode<Integer> treeNode,Integer value){
+
+        // child node
+        if (treeNode==null){
             return null;
         }
+        else if(treeNode.getData()>value){
+            treeNode.setLeft(deleteRecurrsively(treeNode.getLeft(),value));
+        }
+        else if (treeNode.getData()<value) {
+            treeNode.setRight(deleteRecurrsively(treeNode.getRight(),value));
+        }
+        else {
+            // rule if one child is present
+            if (treeNode.getLeft()==null){
+                return treeNode.getRight();
+            }
+            if (treeNode.getRight()==null){
+                return treeNode.getLeft();
+            }
 
-        if (Objects.equals(node.getData(), value)){
-           if (node.getLeft()==null){
-               return node.getRight();
-           }
-           if(node.getRight()==null){
-               return node.getLeft();
-           }
-
-           TreeNode<Integer> successor=getSmallestValue(node.getRight());
-            node.setData(successor.getData()); // copy successor value
-            // delete the successor node from right subtree
-            node.setRight(deleteRecurrsively(node.getRight(), successor.getData()));
+//            rule if both childs are present
+            TreeNode<Integer> successorNode=getSmallestValue(treeNode.getRight());
+            treeNode.setData(successorNode.getData());
+            treeNode.setRight(deleteRecurrsively(treeNode.getRight(),successorNode.getData()));
         }
-        else if (node.getData()>value){
-            node.setLeft(deleteRecurrsively(node.getLeft(),value));
-        }
-        else
-        {
-            node.setRight(deleteRecurrsively(node.getRight(),value));
-        }
-        return node;
+        return treeNode;
     }
-
 
     public TreeNode<Integer> getRoot() {
         return root;
